@@ -85,14 +85,19 @@
         <div class="about-details-container">
           <div class="about-containers">
             <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
+              <img src="./assets/experience.png" alt="Experience icon" class="icon" />
               <h3>Experience</h3>
               <p>1+ years Software Engineering <br />+1 years IT</p>
+              <!-- Learn More/Less toggle button -->
+              <button class="learn-more-btn" onclick="toggleDetails(this)">Learn More</button>
+              <!-- Hidden container for additional details -->
+              <div class="additional-details" style="display: none;">
+                <p>Detail about your first year in software engineering...</p>
+                <p>Detail about your IT experience...</p>
+                <!-- Add more paragraphs as needed -->
+              </div>
             </div>
+            
             <div class="details-container">
               <img
                 src="./assets/education.png"
@@ -293,7 +298,7 @@
               </button>
             </div>
           </div>
-          <div class="details-container color-container">
+          <!-- <div class="details-container color-container">
             <div class="article-container">
               <img
                 src="./assets/project-3.png"
@@ -310,7 +315,7 @@
                 Github
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <img

@@ -293,6 +293,35 @@ section {
   bottom: 2.5rem;
 }
 
+.learn-more-btn {
+  background-color: #f0f0f0; /* Use your accent color */
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease; /* Transition for a smooth effect */
+}
+
+.learn-more-btn:hover {
+  background: rgb(53, 53, 53);
+  color: white;
+}
+
+/* No changes for .learn-more-btn, use the same styles as provided earlier */
+
+/* Updated styles for .additional-details */
+.additional-details {
+  display: none; /* Initially hidden */
+  padding: 10px;
+  margin-top: 10px;
+  transition: all 0.3s ease; /* Transition for a smooth effect */
+}
+
+
 .details-container {
   padding: 1.5rem;
   flex: 1;
@@ -301,6 +330,14 @@ section {
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, margin-bottom 0.3s ease; /* Smooth transition for the transform and shadow */
+  box-shadow: none; /* Initial state with no shadow */
+  
+}
+
+.details-container:hover {
+  transform: scale(1.1); /* Scales the section to 105% of its original size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds shadow behind the section */
 }
 
 .section-container {
