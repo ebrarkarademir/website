@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer with GPT-3.5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 20px;
+            position: relative;
+        }
+        .input-field, .select-field {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .input-field:focus, .select-field:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .button {
+            background: #6e8efb;
+            color: white;
+            padding: 15px 30px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+        .button:hover {
+            background: #5a7cdb;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Summarizer</h1>
+        <label for="api-key">OpenAI API Key:</label>
+        <input type="text" id="api-key" class="input-field" name="api-key" placeholder="Enter your OpenAI API Key here" required>
+        
+        <label for="content">Content to Summarize:</label>
+        <textarea id="content" class="input-field" name="content" rows="6" placeholder="Enter the text to summarize" required></textarea>
+        
+        <button class="button" onclick="summarizeText()">Summarize Text</button>
+        
+        <h2>Summary:</h2>
+        <p id="summary"></p>
+    </div>
+<!-- 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 -->
+    <script>
+        function summarizeText() {
+            var requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow'
+                    };
+
+            fetch("https://j7w6yln7k7.execute-api.eu-central-1.amazonaws.com/dev/test", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+            // const apiKey = document.getElementById('api-key').value;
+            // const content = document.getElementById('content').value;
+
+            // // Replace with your actual API Gateway endpoint URL
+            // const endpoint = 'https://j7w6yln7k7.execute-api.eu-central-1.amazonaws.com/dev/test';
+
+            // fetch(endpoint, {
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         // 'Authorization': apiKey
+            //     },
+            //     // body: JSON.stringify({ content: content })
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     document.getElementById('summary').textContent = data.summary;
+            // })
+            // .catch(error => {
+            //     console.error('Error:', error);
+            //     document.getElementById('summary').textContent = 'An error occurred while summarizing.';
+            // });
+        }
+    </script>
+</body>
+</html>

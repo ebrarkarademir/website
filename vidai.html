@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViDAI Video Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 20px;
+            position: relative;
+        }
+        .input-field, .select-field {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+        .input-field:focus, .select-field:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .button {
+            background: linear-gradient(45deg, #6e8efb, #a777e3);
+            color: white;
+            padding: 15px 30px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+        .button:hover {
+            background: linear-gradient(45deg, #586ecc, #9064cb);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .slider-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .slider-label {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .slider {
+            flex: 3;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin: 10px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider-round {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider-round:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider-round {
+            background-color: #2196F3;
+        }
+        input:focus + .slider-round {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        input:checked + .slider-round:before {
+            transform: translateX(26px);
+        }
+        .select-field {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="video-title">Title of the video:</label>
+        <input type="text" id="video-title" class="input-field" name="video-title" placeholder="Enter video title...">
+
+        <label for="video-content">Content of the video:</label>
+        <textarea id="video-content" class="input-field" name="video-content" rows="6" placeholder="Type the video content here..."></textarea>
+
+       <!-- Slider container in your HTML -->
+        <div class="slider-container">
+            <span class="slider-label">Video Length:</span>
+            <input type="range" min="1" max="30" value="10" class="slider" id="video-length" oninput="updateSliderValue(this.value)">
+            <span id="slider-value" style="margin-left: 10px;">10 min</span>
+        </div>
+
+<!-- Script tag in your HTML, typically placed before the closing </body> tag -->
+<script>
+    function updateSliderValue(value) {
+        document.getElementById('slider-value').textContent = value + ' min';
+    }
+</script>
+
+
+        <label for="subtitles-switch">Subtitles:</label>
+        <label class="switch">
+            <input type="checkbox" id="subtitles-switch">
+            <span class="slider-round"></span>
+        </label>
+
+        <label for="language-select">Language:</label>
+        <select id="language-select" class="select-field">
+            <option value="English" selected>English</option>
+            <option value="Turkish">Turkish</option>
+        </select>
+
+        <label for="category-select">Category:</label>
+        <select id="category-select" class="select-field">
+            <option value="News">News</option>
+            <option value="Advertisement">Advertisement</option>
+            <option value="Education">Education</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="How-to Guides">How-to Guides</option>
+            <option value="Reviews">Reviews</option>
+            <option value="Vlogs">Vlogs</option>
+        </select>
+
+        <button class="button" onclick="generateVideo()">Generate Video</button>
+    </div>
+
+    <script>
+        function updateSliderValue(value) {
+    document.getElementById('slider-value').textContent = value + ' min';
+}
+        function generateVideo() {
+            // Placeholder function for generating video
+            alert('Generating video with the following settings:\n' +
+                  'Title: ' + document.getElementById('video-title').value + '\n' +
+                  'Content: ' + document.getElementById('video-content').value + '\n' +
+                  'Length: ' + document.getElementById('video-length').value + ' minutes\n' +
+                  'Subtitles: ' + (document.getElementById('subtitles-switch').checked ? 'Yes' : 'No') + '\n' +
+                  'Language: ' + document.getElementById('language-select').value + '\n' +
+                  'Category: ' + document.getElementById('category-select').value
+            );
+            // Here you would call your backend API to process the inputs and generate the video
+        }
+    </script>
+</body>
+</html>
