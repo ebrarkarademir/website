@@ -1,8 +1,15 @@
+import json
+
 def run(event, context):
-    # Your code goes here
     return {
         'statusCode': 200,
-        'body': 'Hello from Lambda!'
+        'headers': {
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Origin': 'http://localhost:8000',
+            'Access-Control-Allow-Methods': 'OPTIONS,GET',
+            'Content-Type': 'application/json'
+        },
+        'body': json.dumps('Hello from Lambda!')
     }
 
 

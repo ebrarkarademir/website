@@ -82,44 +82,29 @@
         <button class="button" onclick="summarizeText()">Summarize Text</button>
         
         <h2>Summary:</h2>
-        <p id="summary"></p>
+        <p id="summary"> asdasdasdasdasdas</p>
     </div>
 <!-- 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 -->
     <script>
-        function summarizeText() {
-            var requestOptions = {
-                    method: 'GET',
-                    redirect: 'follow'
-                    };
+    function summarizeText() {
+        // The URL of the API Gateway endpoint
+        var apiUrl = 'https://j7w6yln7k7.execute-api.eu-central-1.amazonaws.com/dev/test';
 
-            fetch("https://j7w6yln7k7.execute-api.eu-central-1.amazonaws.com/dev/test", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+        // Making a GET request to the Lambda function
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Log the response from the Lambda function
+                // Display the response in the 'summary' paragraph
+                document.getElementById('summary').textContent = data.body; // Assuming 'data.body' contains the summary text
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('summary').textContent = 'Error fetching summary.';
+            });
+    }
 
-            // const apiKey = document.getElementById('api-key').value;
-            // const content = document.getElementById('content').value;
-
-            // // Replace with your actual API Gateway endpoint URL
-            // const endpoint = 'https://j7w6yln7k7.execute-api.eu-central-1.amazonaws.com/dev/test';
-
-            // fetch(endpoint, {
-            //     method: 'GET',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         // 'Authorization': apiKey
-            //     },
-            //     // body: JSON.stringify({ content: content })
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     document.getElementById('summary').textContent = data.summary;
-            // })
-            // .catch(error => {
-            //     console.error('Error:', error);
-            //     document.getElementById('summary').textContent = 'An error occurred while summarizing.';
-            // });
-        }
     </script>
+  
 </body>
 </html>

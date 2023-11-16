@@ -13,14 +13,6 @@ functions:
       - http:
           path: test
           method: get
-          cors:
-            origins:
-              - http://localhost:8000
-            headers:
-              - Content-Type
-            allowCredentials: false # If your client doesn't use cookies/authorization headers with requests
-
-
 
 
 # # Welcome to Serverless!
